@@ -8,7 +8,7 @@ extern crate criterion;
 
 use aobench_lib::*;
 use criterion::*;
-use intersection::{Isect};
+use intersection::Isect;
 use scene::Test;
 
 fn hit_scalar(c: &mut Criterion) {
