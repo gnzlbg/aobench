@@ -63,11 +63,6 @@ fn main() {
             d
         }
         "vector_par" => {
-            if is_x86_feature_detected!("avx") {
-                println!("avx detected");
-            } else {
-                println!("avx NOT detected");
-            }
             let d = time::Duration::span(|| {
                 vector_parallel::ao(&mut scene, 2, &mut img)
             });

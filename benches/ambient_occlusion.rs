@@ -40,7 +40,7 @@ fn hit_vector(c: &mut Criterion) {
                 let mut v = ambient_occlusion::vector(s, isect);
                 black_box(&mut v);
             })
-        }).throughput(Throughput::Elements(4)),
+        }).throughput(Throughput::Elements(1)),
     );
 }
 
