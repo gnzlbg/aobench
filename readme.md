@@ -23,13 +23,6 @@ To run it with the default target options (replace `${NAME}` with an algorithm n
 
 And using `RUSTFLAGS` to set the target CPU:
 
-````
+```
 > RUSTFLAGS="-C target-cpu=native" cargo run --release -- 800 600 --algo ${NAME}
 ```
-
-|  `${NAME}`   | time [ms] | speedup [-] |
-|--------------|-----------|-------------|
-| `scalar`     |      0000 |     1.0x    |
-| `vector`     |      0000 |     2.0x    |
-| `scalar_par` |      0000 |     2.5x    |
-| `vector_par` |      0000 |     4.9x    |
