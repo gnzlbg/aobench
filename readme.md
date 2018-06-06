@@ -16,21 +16,28 @@ To run it with the default target options (replace `${NAME}` with an algorithm n
 
 On a dual core AVX1 i5 @1.8 GHz:
 
-|  `${NAME}`   | time [ms] | speedup [-] |
-|--------------|-----------|-------------|
-| `scalar`     |      6266 |     1.0x    |
-| `vector`     |      2386 |     2.6x    |
-| `scalar_par` |      2443 |     2.5x    |
-| `vector_par` |       983 |     6.4x    |
+| `${NAME}` (800x600) | time [ms] | speedup [-] |
+|---------------------|-----------|-------------|
+| `scalar`            |      6266 |        1.0x |
+| `vector`            |      2386 |        2.6x |
+| `scalar_par`        |      2443 |        2.5x |
+| `vector_par`        |       983 |        6.4x |
 
 On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
 
-|  `${NAME}`   | time [ms] | speedup [-] |
-|--------------|-----------|-------------|
-| `scalar`     |      3234 |     1.0x    |
-| `vector`     |      1096 |     3.0x    |
-| `scalar_par` |       132 |    24.5x    |
-| `vector_par` |        76 |    42.6x    |
+| `${NAME}` (800x600) | time [ms] | speedup [-] |
+|---------------------|-----------|-------------|
+| `scalar`            |      3234 |        1.0x |
+| `vector`            |      1096 |        3.0x |
+| `scalar_par`        |       132 |       24.5x |
+| `vector_par`        |        76 |       42.6x |
+
+| `${NAME}` (4096x4096) | time [ms] | speedup [-] |
+|-----------------------|-----------|-------------|
+| `scalar`              |    116121 |        1.0x |
+| `vector`              |     40076 |        2.9x |
+| `scalar_par`          |      3273 |       35.5x |
+| `vector_par`          |      1398 |       83.1x |
 
 And using `RUSTFLAGS` to set the target CPU:
 
