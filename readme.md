@@ -26,3 +26,16 @@ And using `RUSTFLAGS` to set the target CPU:
 ```
 > RUSTFLAGS="-C target-cpu=native" cargo run --release -- 800 600 --algo ${NAME}
 ```
+
+## Overview
+
+There are 4 main pieces in the `aobench` benchmark:
+
+* ray-plane intersection algorithm: [source](https://github.com/gnzlbg/aobench/blob/master/src/intersection/ray_plane.rs)
+* ray-sphere intersection algorithm: [source](https://github.com/gnzlbg/aobench/blob/master/src/intersection/ray_sphere.rs)
+* ambient occlusion algorithm: [source](https://github.com/gnzlbg/aobench/blob/master/src/ambient_occlusion.rs)
+* ray-casting the pixels:
+  * scalar serial: [source](https://github.com/gnzlbg/aobench/blob/master/src/scalar.rs)
+  * scalar parallel: [source](https://github.com/gnzlbg/aobench/blob/master/src/scalar_parallel.rs)
+  * vector serial: [source](https://github.com/gnzlbg/aobench/blob/master/src/vector.rs)
+  * vector parallel: [source](https://github.com/gnzlbg/aobench/blob/master/src/vector_parallel.rs)

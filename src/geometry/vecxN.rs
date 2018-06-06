@@ -35,7 +35,29 @@ impl V3DxN {
         }
     }
 
-    /*
+    #[must_use]
+    #[inline(always)]
+    pub fn ortho_basis(self) -> [V3DxN; 3] {
+        let n = self;
+        let mut basis = [V3DxN::new(), V3DxN::new(), n];
+
+        let max = f32xN::splat(0.6);
+        let min = f32xN::splat(-0.6);
+        let one = f32xN::splat(1.0);
+
+        let mx = n.x.lt(max) & n.x.gt(min);
+        let my = n.y.lt(max) & n.y.gt(min);
+        let mz = n.z.lt(max) & n.z.gt(min);
+
+        basis[1].x = (mx | (!mx & !my & !mz)).select(one, basis[1].x);
+        basis[1].y = (!mx & my).select(one, basis[1].y);
+        basis[1].z = (!mx & !my & mz).select(one, basis[1].z);
+
+        basis[0] = basis[1].cross(basis[2]).normalized();
+        basis[1] = basis[2].cross(basis[0]).normalized();
+        basis
+    }
+
     #[inline(always)]
     #[must_use]
     pub fn cross(self, o: Self) -> Self {
@@ -45,27 +67,6 @@ impl V3DxN {
             z: self.x * o.y - self.y * o.x,
         }
     }
-    #[inline(always)]
-    #[must_use]
-    pub fn ortho_basis(self) -> M3x3 {
-        let n = self;
-        let mut basis = [V3D::new(), V3D::new(), n];
-
-        if n.x < 0.6 && n.x > -0.6 {
-            basis[1].x = 1.0;
-        } else if n.y < 0.6 && n.y > -0.6 {
-            basis[1].y = 1.0;
-        } else if n.z < 0.6 && n.z > -0.6 {
-            basis[1].z = 1.0;
-        } else {
-            basis[1].x = 1.0;
-        }
-
-        basis[0] = basis[1].cross(basis[2]).normalized();
-        basis[1] = basis[2].cross(basis[0]).normalized();
-        basis
-    }
-    */
 }
 
 impl Add for V3DxN {

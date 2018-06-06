@@ -8,8 +8,8 @@ pub trait Intersect<I> {
 
 mod ray_plane;
 mod ray_sphere;
-mod scalar;
-mod simd;
+mod single;
+mod packet;
 
-pub use self::scalar::Isect;
-pub use self::simd::IsectxN;
+pub use self::single::Isect;
+pub use self::packet::IsectxN;

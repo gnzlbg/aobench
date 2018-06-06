@@ -19,4 +19,5 @@ pub use self::rayxN::RayxN;
 pub use self::vecxN::{Selectable, V3DxN};
 
 pub type f32xN = f32x8;
+pub type u32xN = u32x8;
 pub type m32xN = m32x8;

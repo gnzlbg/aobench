@@ -3,6 +3,7 @@
 use geometry::{f32xN, Dot, Ray, RayxN, Selectable, Sphere};
 use intersection::{Intersect, Isect, IsectxN};
 
+// Scalar ray-sphere intersection
 impl Intersect<Sphere> for Ray {
     type Isect = Isect;
     #[inline(always)]
@@ -29,6 +30,7 @@ impl Intersect<Sphere> for Ray {
     }
 }
 
+// Vector ray-sphere intersection for a packet of rays
 impl Intersect<Sphere> for RayxN {
     type Isect = IsectxN;
     #[inline(always)]

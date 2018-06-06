@@ -5,6 +5,7 @@ use intersection::{Intersect, Isect, IsectxN};
 use scene::Scene;
 use std::f32::consts::PI;
 
+/// Scalar ambient occlusion algorithm
 #[inline(always)]
 pub fn scalar<S: Scene>(scene: &mut S, isect: &Isect) -> f32 {
     let mut occlusion: f32 = 0.0;
@@ -43,6 +44,7 @@ pub fn scalar<S: Scene>(scene: &mut S, isect: &Isect) -> f32 {
     1. - occlusion / (ntheta * nphi) as f32
 }
 
+/// Vectorized ambient occlusion algorithm using ray packets
 #[inline(always)]
 pub fn vector<S: Scene>(scene: &mut S, isect: &Isect) -> f32 {
     let mut occlusion = f32xN::splat(0.0);
