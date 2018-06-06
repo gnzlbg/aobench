@@ -14,9 +14,9 @@ extern crate stdsimd;
 
 pub mod ambient_occlusion;
 pub mod geometry;
-pub mod random;
 pub mod image;
 pub mod intersection;
+pub mod random;
 pub mod scene;
 
 pub mod scalar;
