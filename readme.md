@@ -5,6 +5,8 @@
 `aoench` is a small ambient occlusion renderer for benchmarking realworld
 floating point performance in various languages.
 
+![image_vector_par](https://user-images.githubusercontent.com/904614/41043073-653aa5be-69a3-11e8-8a9d-007def8516cc.png)
+
 ## Instructions
 
 
