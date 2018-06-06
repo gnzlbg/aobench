@@ -62,3 +62,5 @@ There are 4 main pieces in the `aobench` benchmark:
 
 The scalar and vectorized implementations of the intersection and ao algorithms
 are in the same file so that they can be easily compared.
+
+As a comparison, the ISPC sources of the same benchmark are [here](https://github.com/ispc/ispc/tree/master/examples/aobench).
