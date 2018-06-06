@@ -1,7 +1,6 @@
 //! Aobench scene: 3 spheres and a plane using a random number generator
 
 use geometry::{Plane, Sphere, V3D};
-use rand::{thread_rng, Rng};
 use scene::Scene;
 use std::num::Wrapping;
 
@@ -54,8 +53,8 @@ impl Scene for Test {
                 radius: 0.5,
             },
         ];
-        let mut rng = thread_rng();
         let mut rands = Vec::new();
+        let mut rng = ::random::scalar::thread_rng();
         for _ in 0..2 * Self::NAO_SAMPLES * Self::NAO_SAMPLES {
             rands.push(rng.gen());
         }

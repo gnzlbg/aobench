@@ -1,7 +1,7 @@
 /// Scene interface
 use geometry::{f32xN, Plane, Sphere};
 
-pub trait Scene {
+pub trait Scene: Send + Sync {
     const NAO_SAMPLES: usize;
     fn new() -> Self;
     fn rand(&mut self) -> f32;

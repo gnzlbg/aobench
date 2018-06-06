@@ -14,12 +14,23 @@ To run it with the default target options (replace `${NAME}` with an algorithm n
 > cargo run --release -- 800 600 --algo ${NAME}
 ```
 
+On a dual core AVX1 i5 @1.8 GHz:
+
 |  `${NAME}`   | time [ms] | speedup [-] |
 |--------------|-----------|-------------|
-| `scalar`     |      6705 |     1.0x    |
-| `vector`     |      3174 |     2.0x    |
-| `scalar_par` |      2638 |     2.5x    |
-| `vector_par` |      1360 |     4.9x    |
+| `scalar`     |      6266 |     1.0x    |
+| `vector`     |      2386 |     2.6x   |
+| `scalar_par` |      2443 |     2.5x    |
+| `vector_par` |       983 |     6.4x   |
+
+On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
+
+|  `${NAME}`   | time [ms] | speedup [-] |
+|--------------|-----------|-------------|
+| `scalar`     |      3628 |     1.0x    |
+| `vector`     |      1943 |     1.9x    |
+| `scalar_par` |       225 |    16.1x    |
+| `vector_par` |       165 |    22.0x    |
 
 And using `RUSTFLAGS` to set the target CPU:
 
@@ -39,3 +50,6 @@ There are 4 main pieces in the `aobench` benchmark:
   * scalar parallel: [source](https://github.com/gnzlbg/aobench/blob/master/src/scalar_parallel.rs)
   * vector serial: [source](https://github.com/gnzlbg/aobench/blob/master/src/vector.rs)
   * vector parallel: [source](https://github.com/gnzlbg/aobench/blob/master/src/vector_parallel.rs)
+
+The scalar and vectorized implementations of the intersection and ao algorithms
+are in the same file so that they can be easily compared.

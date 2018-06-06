@@ -9,12 +9,12 @@
 extern crate cfg_if;
 extern crate failure;
 extern crate png;
-extern crate rand;
 extern crate rayon;
 extern crate stdsimd;
 
 pub mod ambient_occlusion;
 pub mod geometry;
+pub mod random;
 pub mod image;
 pub mod intersection;
 pub mod scene;

@@ -1,7 +1,6 @@
 //! Aobench scene: 3 spheres and a plane using a random number generator
 
 use geometry::{f32xN, Plane, Sphere, V3D};
-use rand::{thread_rng, Rng};
 use scene::Scene;
 
 #[derive(Clone)]
@@ -54,8 +53,7 @@ impl Scene for Random {
         Self { plane, spheres }
     }
     fn rand(&mut self) -> f32 {
-        let mut rng = thread_rng();
-        rng.gen()
+        ::random::scalar::thread_rng().gen()
     }
     fn plane(&self) -> &Plane {
         &self.plane
@@ -64,28 +62,7 @@ impl Scene for Random {
         &self.spheres
     }
     fn rand_f32xN(&mut self) -> (f32xN, f32xN) {
-        let mut rng = thread_rng();
-        let r = [
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-            rng.gen(),
-        ];
-        (
-            f32xN::new(r[0], r[2], r[4], r[6], r[8], r[10], r[12], r[14]),
-            f32xN::new(r[1], r[3], r[5], r[7], r[9], r[11], r[13], r[15]),
-        )
+        let mut rng = ::random::vector::thread_rng();
+        (rng.gen(), rng.gen())
     }
 }
