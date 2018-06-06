@@ -83,9 +83,7 @@ pub fn vector<S: Scene>(scene: &mut S, isect: &Isect) -> f32 {
         }
     }
 
-    // TODO: wrapping_sum for floats should just be called sum
-    // It saturates on +-INFINITY, it does not wrap
-    1. - occlusion.wrapping_sum() / (ntheta * nphi) as f32
+    1. - occlusion.sum() / (ntheta * nphi) as f32
 }
 
 #[cfg(test)]
