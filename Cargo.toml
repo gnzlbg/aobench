@@ -53,3 +53,8 @@ harness = false
 name = "ambient_occlusion"
 path = "benches/ambient_occlusion.rs"
 harness = false
+
+[[bench]]
+name = "random"
+path = "benches/random.rs"
+harness = false
