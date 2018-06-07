@@ -16,14 +16,22 @@ To run it with the default target options (replace `${NAME}` with an algorithm n
 > cargo run --release -- 800 600 --algo ${NAME}
 ```
 
+To build and run the ISPC version:
+
+```
+> cd volta && make
+> ao 800 600
+```
+
 On a dual core AVX1 i5 @1.8 GHz:
 
-| `${NAME}` (800x600) | time [ms] | speedup [-] |
-|---------------------|-----------|-------------|
-| `scalar`            |      6266 |        1.0x |
-| `vector`            |      2386 |        2.6x |
-| `scalar_par`        |      2443 |        2.5x |
-| `vector_par`        |       983 |        6.4x |
+| `${NAME}`    | time [ms] | speedup  [-] |  time [ms] |  speedup [-] |
+| 800 x 600    |      Rust | Rust vs Rust | ISPC 1.9.2 | ISPC vs Rust |
+|--------------|-----------|--------------|------------|--------------|
+| `scalar`     |      6266 |         1.0x |       4976 |         1.3x |
+| `vector`     |      2386 |         2.6x |       1157 |         2.1x |
+| `scalar_par` |      2443 |         2.5x |          - |            - |
+| `vector_par` |       983 |         6.4x |        454 |         2.2x |
 
 On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
 
