@@ -1,4 +1,8 @@
-//! Pseudo random number generation utilities
+//! Pseudo random number generators.
+//!
+//! Currently only `LFSR113` is implemented, since that is what ISPC uses, and it
+//! allows us to compare Rust's codegen with that of ISPC for the same
+//! algorithms.
 //!
 //! Use `{scalar,vector}::thread_rng()` to get a handle to the thread-local
 //! random number generator, and call `.gen()` to generate an `f32` or an
@@ -8,6 +12,8 @@
 pub mod scalar {
     use std::cell::UnsafeCell;
     use std::rc::Rc;
+
+    // Note: This implementation could be vectorized using an `u32x4`.
     struct RngT(u32, u32, u32, u32);
 
     impl RngT {
