@@ -25,7 +25,7 @@ To build and run the ISPC version:
 
 On a dual core AVX1 i5 @1.8 GHz:
 
-| `${NAME}`    | time [ms] | speedup  [-] |  time [ms] |  speedup [-] |
+| `${NAME}`    | time [ms] | speedup  [-] | time  [ms] | speedup  [-] |
 | 800 x 600    |      Rust | Rust vs Rust | ISPC 1.9.2 | ISPC vs Rust |
 |--------------|-----------|--------------|------------|--------------|
 | `scalar`     |      6266 |         1.0x |       4976 |         1.3x |
