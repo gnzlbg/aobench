@@ -24,6 +24,10 @@ cfg-if = "^0.1"
 [dev-dependencies]
 criterion = { version = '^0.2', features=['real_blackbox'] }
 
+[features]
+default = [ "256bit" ]
+256bit = []
+
 [profile.bench]
 opt-level = 3
 debug = false

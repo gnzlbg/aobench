@@ -110,19 +110,31 @@ mod tests {
         assert!(!isect_miss.hit);
 
         // hit, miss, hit, miss
+
+        #[cfg(feature = "256bit")]
+        let z_val = f32xN::new(-1., 1., -1., 1., -1., 1., -1., 1.);
+        #[cfg(not(feature = "256bit"))]
+        let z_val = f32xN::new(-1., 1., -1., 1.);
+
         let rays = RayxN {
             origin: V3DxN::new(),
             dir: V3DxN {
                 x: f32xN::splat(0.01),
                 y: f32xN::splat(0.01),
-                z: f32xN::new(-1., 1., -1., 1., -1., 1., -1., 1.),
+                z: z_val,
             },
         };
 
         let isectxN = rays.intersect(&plane, IsectxN::new());
+
+        #[cfg(feature = "256bit")]
+        let expected = m32xN::new(true, false, true, false, true, false, true, false);
+        #[cfg(not(feature = "256bit"))]
+        let expected = m32xN::new(true, false, true, false);
+
         assert_eq!(
             isectxN.hit,
-            m32xN::new(true, false, true, false, true, false, true, false)
+            expected
         );
 
         assert_eq!(isect_hit.t, isectxN.t.extract(0));
