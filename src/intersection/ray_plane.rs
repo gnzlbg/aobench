@@ -45,10 +45,12 @@ impl Intersect<Plane> for RayxN {
             let t = m.sel(-(ray.origin.dot(plane.n) + d) / v, isect.t);
             let m = m & t.gt(f32xN::splat(0.)) & t.lt(isect.t);
 
-            isect.t = m.sel(t, isect.t);
-            isect.hit = m | isect.hit;
-            isect.p = m.sel(ray.origin + t * ray.dir, isect.p);
-            isect.n = m.sel(plane.n, isect.n);
+            if m.any() {
+                isect.t = m.sel(t, isect.t);
+                isect.hit = m | isect.hit;
+                isect.p = m.sel(ray.origin + t * ray.dir, isect.p);
+                isect.n = m.sel(plane.n, isect.n);
+            }
         }
 
         debug_assert!({

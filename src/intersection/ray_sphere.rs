@@ -49,10 +49,12 @@ impl Intersect<Sphere> for RayxN {
             let t = m.sel(-b - d.sqrt(), isect.t);
             let m = m & t.gt(f32xN::splat(0.)) & t.lt(isect.t);
 
-            isect.t = m.sel(t, isect.t);
-            isect.hit = m | isect.hit;
-            isect.p = m.sel(ray.origin + t * ray.dir, isect.p);
-            isect.n = m.sel((isect.p - sphere.center).normalized(), isect.n);
+            if m.any() {
+                isect.t = m.sel(t, isect.t);
+                isect.hit = m | isect.hit;
+                isect.p = m.sel(ray.origin + t * ray.dir, isect.p);
+                isect.n = m.sel((isect.p - sphere.center).normalized(), isect.n);
+            }
         }
 
         debug_assert!({
