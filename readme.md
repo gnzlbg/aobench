@@ -28,7 +28,7 @@ On a dual core AVX1 i5 @1.8 GHz:
 | `${NAME}`    | time [ms] | speedup  [-] | time  [ms] | speedup  [-] |
 | 800 x 600    |      Rust | Rust vs Rust | ISPC 1.9.2 | ISPC vs Rust |
 |--------------|-----------|--------------|------------|--------------|
-| `scalar`     |      6266 |         1.0x |       4976 |         1.3x |
+| `scalar`     |      6266 |         1.0x |       4976 | clang7: 1.3x |
 | `vector`     |      2386 |         2.6x |       1157 |         2.1x |
 | `scalar_par` |      2443 |         2.5x |          - |            - |
 | `vector_par` |       983 |         6.4x |        454 |         2.2x |
@@ -38,7 +38,7 @@ On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
 | `${NAME}`    | time [ms] |  speedup [-] | time  [ms] | speedup  [-] |
 | 800 x 600    |      Rust | Rust vs Rust | ISPC 1.9.2 | ISPC vs Rust |
 |--------------|-----------|--------------|------------|--------------|
-| `scalar`     |      3234 |         1.0x |       3544 |         0.9x |
+| `scalar`     |      3234 |         1.0x |       3544 | clang7: 0.9x |
 | `vector`     |      1096 |         3.0x |        525 |         2.1x |
 | `scalar_par` |       132 |        24.5x |          - |            - |
 | `vector_par` |        76 |        42.6x |         20 |         3.8x |
@@ -46,7 +46,7 @@ On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
 | `${NAME}`    | time [ms] |  speedup [-] | time  [ms] | speedup  [-] |
 | 4096 x 4096  |      Rust | Rust vs Rust | ISPC 1.9.2 | ISPC vs Rust |
 |--------------|-----------|--------------|------------|--------------|
-| `scalar`     |    116121 |         1.0x |     128419 |         0.9x |
+| `scalar`     |    116121 |         1.0x |     128419 | clang7: 0.9x |
 | `vector`     |     40076 |         2.9x |      19707 |         2.0x |
 | `scalar_par` |      3273 |        35.5x |          - |            - |
 | `vector_par` |      1398 |        83.1x |        644 |         2.2x |
