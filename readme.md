@@ -16,12 +16,22 @@ To run it with the default target options (replace `${NAME}` with an algorithm n
 > cargo run --release -- 800 600 --algo ${NAME}
 ```
 
-To build and run the ISPC version:
+Use `RUSTFLAGS` to set the target CPU, for example:
+
+```
+> RUSTFLAGS="-C target-cpu=native" cargo run --release -- 800 600 --algo ${NAME}
+```
+
+To build and run the Intel SPMD Program Compiler (ISPC) version:
 
 ```
 > cd volta && make
 > ao 800 600
 ```
+
+You can download ISPC for free for all major architectures from [the ISPC website](https://ispc.github.io/downloads.html).
+
+## Results
 
 On a dual core AVX1 i5 @1.8 GHz:
 
@@ -47,12 +57,6 @@ On a 28 core Xeon E5-2690 v4 @ 2.60GHz:
 | `vector`     |               40076 |                          2.9x |                     19707 | 2.0x                          |
 | `scalar_par` |                3273 |                         35.5x |                         - | -                             |
 | `vector_par` |                1398 |                         83.1x |                       644 | 2.2x                          |
-
-And using `RUSTFLAGS` to set the target CPU:
-
-```
-> RUSTFLAGS="-C target-cpu=native" cargo run --release -- 800 600 --algo ${NAME}
-```
 
 ## Overview
 
